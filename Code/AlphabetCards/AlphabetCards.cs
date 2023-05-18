@@ -1,6 +1,5 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using UnboundLib.GameModes;
 using UnityEngine;
 
 [BepInDependency("com.willis.rounds.unbound")]
@@ -13,8 +12,11 @@ public class AlphabetCards : BaseUnityPlugin
     private const string ModId = "ot.dan.rounds.alphabetcards";
     private const string ModName = "Alphabet Cards";
     public const string Version = "1.0.0";
-    public const string ModInitials = "GS";
+    public const string ModInitials = "Alphabet";
     private const string CompatibilityModName = "AlphabetCards";
+
+    public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("alphabetcards", typeof(AlphabetCards).Assembly);
+    
     public static AlphabetCards Instance { get; private set; }
 
     internal void Awake()
@@ -24,7 +26,7 @@ public class AlphabetCards : BaseUnityPlugin
         var harmony = new Harmony(ModId);
         harmony.PatchAll();
 
-        // assets.LoadAsset<GameObject>("ModCards").GetComponent<CardHolder>().RegisterCards();
+        assets.LoadAsset<GameObject>("_Cards").GetComponent<CardHolder>().RegisterCards();
     }
 
     internal void Start()
