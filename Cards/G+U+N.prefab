@@ -58,14 +58,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043437007509817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a89d10daf3634254bb2e6b79b9ee4280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: alphabetwhite
-  targetColor: {r: 0.8962264, g: 0, b: 0, a: 0}
-  bgColor: {r: 0.24974705, g: 0, b: 0.4716981, a: 0}
+  Name: 
+  targetColor: {r: 0, g: 0, b: 0, a: 0}
+  bgColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114421384111938668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,17 +81,21 @@ MonoBehaviour:
   soundDisableBlockBasic: 0
   cardName: G+U+N
   cardDestription: Shoot everyone with your GUN improved missile bullets.
-  cardStats: []
+  cardStats:
+  - positive: 1
+    amount: +100%
+    simepleAmount: 4
+    stat: Damage
   rarity: 0
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 4649896663349853642, guid: 4e1d0227ee9f3504992eb5ed073a90a0, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
   categories: []
   allowMultiple: 0
   blacklistedCategories: []
-  cardBase: {fileID: 808854060317840374, guid: ab7829e25091330408953c12456bfb86, type: 3}
-  colorTheme: 0
+  cardBase: {fileID: 1720757555582362, guid: ab7829e25091330408953c12456bfb86, type: 3}
+  colorTheme: 3
 --- !u!114 &114081461618018503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 602631534697955547, guid: 383a4196089e36249b793c05c873af2e,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
@@ -165,7 +170,7 @@ MonoBehaviour:
   shootPosition: {fileID: 0}
   player: {fileID: 0}
   isReloading: 0
-  damage: 20
+  damage: 2
   reloadTime: 1
   reloadTimeAdd: 0
   recoilMuiltiplier: 1
@@ -214,7 +219,24 @@ MonoBehaviour:
   currentCharge: 0
   useCharge: 0
   dontAllowAutoFire: 0
-  objectsToSpawn: []
+  objectsToSpawn:
+  - effect: {fileID: 7338787607661004850, guid: 743d7d2142b24064b9e00a5ed634929e,
+      type: 3}
+    direction: 0
+    spawnOn: 0
+    spawnAsChild: 0
+    numberOfSpawns: 1
+    normalOffset: 0
+    stickToBigTargets: 0
+    stickToAllTargets: 1
+    zeroZ: 0
+    AddToProjectile: {fileID: 7338787607661004850, guid: 743d7d2142b24064b9e00a5ed634929e,
+      type: 3}
+    removeScriptsFromProjectileObject: 0
+    scaleStacks: 0
+    scaleStackM: 0
+    scaleFromDamage: 0
+    stacks: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 1}
   waveMovement: 0
   teleport: 0
