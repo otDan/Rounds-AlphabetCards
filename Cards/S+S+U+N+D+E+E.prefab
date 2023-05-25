@@ -87,6 +87,10 @@ MonoBehaviour:
     amount: +150%
     simepleAmount: 4
     stat: Health
+  - positive: 1
+    amount: OnBlock
+    simepleAmount: 0
+    stat: You Will See
   rarity: 0
   cardArt: {fileID: 8883835477271689530, guid: 8f4d33748f07a2e4bb3edbaad18ceb60, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -110,7 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 7598977531764244539, guid: 346bf3f60f7b60d43b568811457ef0ca,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 2.5

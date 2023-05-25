@@ -5,6 +5,8 @@ using UnityEngine;
 [BepInDependency("com.willis.rounds.unbound")]
 [BepInDependency("pykess.rounds.plugins.moddingutils")]
 [BepInDependency("io.olavim.rounds.rwf")]
+[BepInDependency("root.rarity.lib", BepInDependency.DependencyFlags.HardDependency)]
+[BepInDependency("root.cardtheme.lib", BepInDependency.DependencyFlags.HardDependency)]
 [BepInPlugin(ModId, CompatibilityModName, Version)]
 [BepInProcess("Rounds.exe")]
 public class AlphabetCards : BaseUnityPlugin
@@ -14,8 +16,6 @@ public class AlphabetCards : BaseUnityPlugin
     public const string Version = "1.0.0";
     public const string ModInitials = "Alphabet";
     private const string CompatibilityModName = "AlphabetCards";
-
-    public static AssetBundle assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("alphabetcards", typeof(AlphabetCards).Assembly);
     
     public static AlphabetCards Instance { get; private set; }
 
@@ -26,7 +26,8 @@ public class AlphabetCards : BaseUnityPlugin
         var harmony = new Harmony(ModId);
         harmony.PatchAll();
 
-        assets.LoadAsset<GameObject>("_Cards").GetComponent<CardHolder>().RegisterCards();
+        AssetManager.assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("alphabetcards", typeof(AlphabetCards).Assembly);
+        AssetManager.Cards.GetComponent<CardHolder>().RegisterCards();
     }
 
     internal void Start()

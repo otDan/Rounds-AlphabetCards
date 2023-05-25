@@ -82,7 +82,11 @@ MonoBehaviour:
   cardName: NCard
   cardDestription: Gather the power of the punctuations and shoot everyone with your
     rainbow laser!
-  cardStats: []
+  cardStats:
+  - positive: 1
+    amount: OnBlock
+    simepleAmount: 0
+    stat: Rainbow Laser
   rarity: 0
   cardArt: {fileID: 7483223587284875409, guid: 2e53ec3e9a3c0984e87f250ac2a0be4e, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}

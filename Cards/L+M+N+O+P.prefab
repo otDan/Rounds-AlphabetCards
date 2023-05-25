@@ -94,6 +94,10 @@ MonoBehaviour:
     amount: +150%
     simepleAmount: 4
     stat: Health
+  - positive: 1
+    amount: OnBlock
+    simepleAmount: 0
+    stat: Become Buff
   rarity: 0
   cardArt: {fileID: 4598291871365432122, guid: eac366cfc20830940be4e4c926c9f4a1, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}

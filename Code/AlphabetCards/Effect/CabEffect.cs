@@ -12,8 +12,8 @@ public class CabEffect : MonoBehaviour
     {
         player = base.transform.root.GetComponent<Player>();
         var art = player.transform.GetChild(0);
-        var cab = AlphabetCards.assets.LoadAsset<GameObject>("Sprite_CAB");
-        cabSprite = GameObject.Instantiate(cab, art);
+        var cab = AssetManager.Sprite_Cab;
+        cabSprite = Instantiate(cab, art);
         renderer = cabSprite.GetComponent<SpriteRenderer>();
     }
 
