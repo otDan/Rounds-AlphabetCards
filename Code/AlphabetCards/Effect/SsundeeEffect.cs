@@ -15,7 +15,7 @@ public class SsundeeEffect : MonoBehaviour
     void Start()
     {
         player = base.transform.root.GetComponent<Player>();
-        particleTeleport = AssetManager.Particle_Teleport;
+        particleTeleport = AssetManager.ParticleTeleport;
         animator = GetComponent<Animator>();
         player.data.block.BlockAction += BlockAction;
     }

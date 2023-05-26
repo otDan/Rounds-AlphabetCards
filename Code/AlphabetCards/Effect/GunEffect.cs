@@ -13,7 +13,7 @@ public class GunEffect : MonoBehaviour
     {
         player = base.transform.root.GetComponent<Player>();
         var art = player.data.weaponHandler.gun.gameObject.transform.GetChild(1);
-        var gun = AssetManager.Sprite_Gun;
+        var gun = AssetManager.SpriteGun;
         gunSprite = Instantiate(gun, art);
         renderer = gunSprite.GetComponent<SpriteRenderer>();
     }

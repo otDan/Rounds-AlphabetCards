@@ -9,47 +9,47 @@ public static class AssetManager
 {
     public static AssetBundle assets;
 
-    private static GameObject _cards;
+    private static GameObject _Cards;
     public static GameObject Cards
     {
         get
         {
-            if (_cards == null)
-                _cards = assets.LoadAsset<GameObject>("_Cards");
-            return _cards;
+            if (_Cards == null)
+                _Cards = assets.LoadAsset<GameObject>("_Cards");
+            return _Cards;
         }
     }
 
-    private static GameObject _Sprite_Cab;
-    public static GameObject Sprite_Cab
+    private static GameObject _SpriteCab;
+    public static GameObject SpriteCab
     {
         get
         {
-            if (_Sprite_Cab == null)
-                _Sprite_Cab = assets.LoadAsset<GameObject>("Sprite_CAB");
-            return _Sprite_Cab;
+            if (_SpriteCab == null)
+                _SpriteCab = assets.LoadAsset<GameObject>("Sprite_CAB");
+            return _SpriteCab;
         }
     }
 
-    private static GameObject _Sprite_Gun;
-    public static GameObject Sprite_Gun
+    private static GameObject _SpriteGun;
+    public static GameObject SpriteGun
     {
         get
         {
-            if (_Sprite_Gun == null)
-                _Sprite_Gun = assets.LoadAsset<GameObject>("Sprite_GUN");
-            return _Sprite_Gun;
+            if (_SpriteGun == null)
+                _SpriteGun = assets.LoadAsset<GameObject>("Sprite_GUN");
+            return _SpriteGun;
         }
     }
 
-    private static GameObject _Particle_Teleport;
-    public static GameObject Particle_Teleport
+    private static GameObject _ParticleTeleport;
+    public static GameObject ParticleTeleport
     {
         get
         {
-            if (_Particle_Teleport == null)
-                _Particle_Teleport = assets.LoadAsset<GameObject>("Particle_Teleport");
-            return _Particle_Teleport;
+            if (_ParticleTeleport == null)
+                _ParticleTeleport = assets.LoadAsset<GameObject>("Particle_Teleport");
+            return _ParticleTeleport;
         }
     }
 
