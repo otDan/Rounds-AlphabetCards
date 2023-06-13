@@ -1,6 +1,9 @@
 ﻿using Assets.AlphabetCards.Code.AlphabetCards.Util;
+using ModdingUtils.Utils;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnboundLib;
 using UnityEngine;
 
 public class SsundeeEffect : MonoBehaviour
@@ -11,6 +14,7 @@ public class SsundeeEffect : MonoBehaviour
     private readonly List<GameObject> particles = new List<GameObject>();
     private Vector3 savedPosition;
     private bool canTeleport = true;
+    public GameObject explosion;
 
     void Start()
     {
@@ -78,6 +82,15 @@ public class SsundeeEffect : MonoBehaviour
     {
         GameObject newParticleTeleport = Instantiate(particleTeleport, player.transform.position, Quaternion.identity);
         particles.Add(newParticleTeleport);
+        GameObject newExplosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
+        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID) && Vector3.Distance(player.transform.position, this.player.transform.position) < 5).ToList();
+
+        foreach (Player enemyPlayer in enemyPlayers)
+        {
+            if (player.data.view.IsMine)
+                enemyPlayer.data.healthHandler.CallTakeDamage(enemyPlayer.data.maxHealth * Vector2.one, enemyPlayer.transform.position);
+        }
+
         newParticleTeleport = Instantiate(particleTeleport, teleportPosition, Quaternion.identity);
         particles.Add(newParticleTeleport);
 

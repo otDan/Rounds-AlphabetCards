@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ModdingUtils.Utils;
 using UnityEngine;
 
 public static class AssetManager
@@ -14,9 +10,22 @@ public static class AssetManager
     {
         get
         {
+            AlphabetCards.Instance.Log("Loading _Cards");
             if (_Cards == null)
                 _Cards = assets.LoadAsset<GameObject>("_Cards");
+            AlphabetCards.Instance.Log("_Cards: " + _Cards);
             return _Cards;
+        }
+    }
+
+    private static GameObject _SpriteF;
+    public static GameObject SpriteF
+    {
+        get
+        {
+            if (_SpriteF == null)
+                _SpriteF = assets.LoadAsset<GameObject>("Sprite_F");
+            return _SpriteF;
         }
     }
 
@@ -57,8 +66,41 @@ public static class AssetManager
     public static AudioClip Sound_Teleport {
         get {
             if (_Sound_Teleport == null)
-                _Sound_Teleport = assets.LoadAsset<AudioClip>("teleport");
+                _Sound_Teleport = assets.LoadAsset<AudioClip>("Sound_Teleport");
             return _Sound_Teleport;
+        }
+    }
+
+    private static AudioClip _Sound_Bite;
+    public static AudioClip Sound_Bite
+    {
+        get
+        {
+            if (_Sound_Bite == null)
+                _Sound_Bite = assets.LoadAsset<AudioClip>("Sound_Bite");
+            return _Sound_Bite;
+        }
+    }
+
+    private static AudioClip _Sound_F;
+    public static AudioClip Sound_F
+    {
+        get
+        {
+            if (_Sound_F == null)
+                _Sound_F = assets.LoadAsset<AudioClip>("Sound_F");
+            return _Sound_F;
+        }
+    }
+
+    private static AudioClip _Sound_SSUNDEE;
+    public static AudioClip Sound_SSUNDEE
+    {
+        get
+        {
+            if (_Sound_SSUNDEE == null)
+                _Sound_SSUNDEE = assets.LoadAsset<AudioClip>("Sound_SSUNDEE");
+            return _Sound_SSUNDEE;
         }
     }
 }

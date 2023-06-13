@@ -80,8 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: S+S+U+N+D+E+E
-  cardDestription: You know it, SUNDEE will bring out some super op power that will
-    kill us all...
+  cardDestription: You just know that SUNDEE will bring out some super op power that
+    will kill us all...
   cardStats:
   - positive: 1
     amount: +150%

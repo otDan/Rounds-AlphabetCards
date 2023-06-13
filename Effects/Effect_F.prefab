@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5502861265725033119
+--- !u!1 &6202557886368649601
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3871831339123666450}
-  - component: {fileID: 8244779930454074249}
+  - component: {fileID: 878447463590812411}
+  - component: {fileID: 114135393839133220}
   m_Layer: 0
-  m_Name: _Cards
+  m_Name: Effect_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3871831339123666450
+--- !u!4 &878447463590812411
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502861265725033119}
+  m_GameObject: {fileID: 6202557886368649601}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,23 +31,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8244779930454074249
+--- !u!114 &114135393839133220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5502861265725033119}
+  m_GameObject: {fileID: 6202557886368649601}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acdf68b19c6812a4b8827090ec21acf1, type: 3}
+  m_Script: {fileID: 11500000, guid: 63717e9258f4e6d4d8eee7b141e9cfcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cards: []
-  HiddenCards:
-  - {fileID: 1043437007509817, guid: f6da5e63e8b2b4e4796537c5728e7561, type: 3}
-  - {fileID: 1043437007509817, guid: d25ff31b13af7434092a47d1fd442761, type: 3}
-  - {fileID: 1043437007509817, guid: 5a28d6a545194c34791c9c63c04f75b3, type: 3}
-  - {fileID: 1043437007509817, guid: 8faeb9e55eb2d4e44808260a76ad01d4, type: 3}
-  - {fileID: 1043437007509817, guid: 9f5f0d4b20150de4183c93863dc04c38, type: 3}
-  - {fileID: 1043437007509817, guid: 958d0882afc23e84395e0e392498fcba, type: 3}

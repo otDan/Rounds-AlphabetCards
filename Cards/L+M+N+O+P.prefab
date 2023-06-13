@@ -95,7 +95,7 @@ MonoBehaviour:
     simepleAmount: 4
     stat: Health
   - positive: 1
-    amount: OnBlock
+    amount: OnFullHealth
     simepleAmount: 0
     stat: Become Buff
   rarity: 0
@@ -121,7 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 1456021958384225, guid: 0e6eaabce07ccaa4983ffd78cc0774a8,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 2.5

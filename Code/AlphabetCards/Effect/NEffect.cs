@@ -1,10 +1,8 @@
-﻿using Sonigon.Internal;
+﻿using Photon.Pun;
+using Sonigon.Internal;
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnboundLib;
 using UnityEngine;
 
 internal class NEffect : MonoBehaviour
@@ -40,11 +38,9 @@ internal class NEffect : MonoBehaviour
         _beam.SetActive(false);
         _player.data.block.BlockAction += BlockAction;
 
-        // Calculate the initial start and end hues
         startHue = hue;
         endHue = (hue + colorOffset) % 1f;
 
-        // Set the initial colors
         SetLineRendererColors();
     }
 
@@ -69,7 +65,7 @@ internal class NEffect : MonoBehaviour
         Vector3 shootPosition = _gun.shootPosition.position;
         staticEffect.transform.position = shootPosition;
         Vector3 direction = _gun.shootPosition.forward;
-        Vector2 force = direction * 100 * 15f;
+        Vector2 force = direction * 100 * 1.75f;
         _beam.transform.position = shootPosition;
 
         RotateToMouse(direction);
@@ -93,25 +89,27 @@ internal class NEffect : MonoBehaviour
         {
             component.BulletPush(force, hit.point, _player.data);
         }
+        Player player = hit.transform.GetComponent<Player>();
+        if ((bool) player)
+        {
+            player.data.healthHandler.TakeDamage(Vector2.one, position);
+            player.data.view.RPC("RPCA_AddSilence", RpcTarget.All, 1f);
+            player.data.healthHandler.TakeForce(force);
+        }
     }
 
     private void UpdateColor()
     {
-        // Increment the hue value based on cycleSpeed
         hue += cycleSpeed * Time.deltaTime;
         if (hue > 1f)
         {
             hue -= 1f;
         }
 
-        // Calculate the adjusted start and end hues
         startHue = hue;
         endHue = (hue + colorOffset) % 1f;
 
-        // Update the colors of the Line Renderer
         SetLineRendererColors();
-
-        
     }
 
     private void SetLineRendererColors()
@@ -119,14 +117,12 @@ internal class NEffect : MonoBehaviour
         ParticleSystem.MainModule settingsStatic = staticEffect.GetComponent<ParticleSystem>().main;
         ParticleSystem.MainModule settingsStart = startEffect.GetComponent<ParticleSystem>().main;
         ParticleSystem.MainModule settingsEnd = endEffect.GetComponent<ParticleSystem>().main;
-        // Set the color of each vertex in the line renderer
+
         for (int i = 0; i < lineRenderer.positionCount; i++)
         {
-            //float t = (float) i / (lineRenderer.positionCount - 1); // Calculate interpolation factor
             Color startColor = Color.HSVToRGB(startHue, 1f, 1f);
             Color endColor = Color.HSVToRGB(endHue, 1f, 1f);
             
-            //Color _startColor = Color.Lerp(startColor, endColor, t);
             lineRenderer.startColor = startColor;
             lineRenderer.endColor = endColor;
 
@@ -139,6 +135,13 @@ internal class NEffect : MonoBehaviour
     private void ShootBeam()
     {
         _beam.SetActive(true);
+        StartCoroutine(StopBeam());
+    }
+
+    private IEnumerator StopBeam()
+    {
+        yield return new WaitForSeconds(2f);
+        _beam.SetActive(false);
     }
 
     private void RotateToMouse(Vector3 direction)

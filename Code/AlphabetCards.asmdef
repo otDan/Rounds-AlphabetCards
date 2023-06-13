@@ -5,7 +5,8 @@
         "ModdingUtils",
         "RarityLib",
         "CardThemeLib",
-        "ClassesManagerReborn"
+        "ClassesManagerReborn",
+        "CardChoiceSpawnUniqueCardPatch"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
@@ -16,7 +17,9 @@
         "0Harmony.dll",
         "BepInEx.dll",
         "Assembly-CSharp.dll",
-        "SonigonAudioEngine.Runtime.dll"
+        "SonigonAudioEngine.Runtime.dll",
+        "PhotonUnityNetworking.dll",
+        "PhotonRealtime.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": []

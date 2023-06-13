@@ -1,6 +1,8 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using UnityEngine;
+using System;
+using UnboundLib;
+using UnboundLib.GameModes;
 
 [BepInDependency("com.willis.rounds.unbound")]
 [BepInDependency("pykess.rounds.plugins.moddingutils")]
@@ -27,12 +29,16 @@ public class AlphabetCards : BaseUnityPlugin
         harmony.PatchAll();
 
         AssetManager.assets = Jotunn.Utils.AssetUtils.LoadAssetBundleFromResources("alphabetcards", typeof(AlphabetCards).Assembly);
-        AssetManager.Cards.GetComponent<CardHolder>().RegisterCards();
+        var cards = AssetManager.Cards;
+        Log("Cards: " + cards);
+        var cardHolder = cards.GetComponent<CardHolder>();
+        Log("CardHolder: " + cardHolder);
+        cardHolder.RegisterCards();
     }
 
     internal void Start()
     {
-
+        GameModeManager.AddHook(GameModeHooks.HookGameStart, GameController.GameStart);
     }
 
     public void Log(string debug)

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: C+A+B
-  cardDestription: Drive around in a CAB super fast and ram into people!
+  cardDestription: Spread your toxic CAB fumes on other players!
   cardStats:
   - positive: 1
     amount: +150%
@@ -91,13 +91,9 @@ MonoBehaviour:
     simepleAmount: 3
     stat: Gravity
   - positive: 1
-    amount: 15hp
-    simepleAmount: 2
-    stat: Ramming Damage
-  - positive: 1
     amount: OnBlock
-    simepleAmount: 0
-    stat: Ram Towards Cursor
+    simepleAmount: 2
+    stat: Spawn Toxic Fumes Around Enemies
   rarity: 0
   cardArt: {fileID: 7287431081384307945, guid: 9dad19e1ed234b44bb0f9172de9bdba6, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}

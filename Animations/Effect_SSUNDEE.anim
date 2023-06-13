@@ -72,7 +72,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.5
+  - time: 0.45
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.48333332
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.51666665
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.53333336
     functionName: RandomTeleport
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -80,6 +101,13 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.55
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.56666666
     functionName: RandomTeleport
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -122,6 +150,20 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.6666667
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.68333334
+    functionName: RandomTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7
     functionName: RandomTeleport
     data: 
     objectReferenceParameter: {fileID: 0}

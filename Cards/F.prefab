@@ -80,19 +80,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundDisableBlockBasic: 0
   cardName: FCard
-  cardDestription: Bite everyone with your teeth and use your tentacle to grab players
-    around you.
+  cardDestription: Bite everyone with your teeth bringing them all to you.
   cardStats:
   - positive: 1
-    amount: 25hp
+    amount: 33%
     simepleAmount: 0
     stat: Bite Damage
   - positive: 1
     amount: OnBlock
     simepleAmount: 0
-    stat: Bite All Players
+    stat: Grab And Bite All Players
   rarity: 0
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 3068518452989093642, guid: b08c73b325879c84ca2a3acffcc7f4a5, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
   sourceCard: {fileID: 0}
   cardColor: {r: 0.10568709, g: 0.18812303, b: 0.23584908, a: 1}
@@ -115,7 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundCharacterSlowFreeze: {fileID: 0}
-  AddObjectToPlayer: {fileID: 0}
+  AddObjectToPlayer: {fileID: 6202557886368649601, guid: f9e0b9f14103a144db738618814331f9,
+    type: 3}
   objectsAddedToPlayer: []
   sizeMultiplier: 1
   health: 1
