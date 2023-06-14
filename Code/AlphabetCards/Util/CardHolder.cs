@@ -17,6 +17,7 @@ public class CardHolder: MonoBehaviour
 
         foreach(var Card in HiddenCards)
         {
+            //CustomCard.RegisterUnityCard(Card, mod, Card.GetComponent<CardInfo>().cardName, true, null);
             CustomCard.RegisterUnityCard(Card, mod, Card.GetComponent<CardInfo>().cardName, false, null);
             ModdingUtils.Utils.Cards.instance.AddHiddenCard(Card.GetComponent<CardInfo>());
         }

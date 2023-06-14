@@ -87,9 +87,9 @@ MonoBehaviour:
     simepleAmount: 0
     stat: Bite Damage
   - positive: 1
-    amount: OnBlock
+    amount: 
     simepleAmount: 0
-    stat: Grab And Bite All Players
+    stat: Bite All Players
   rarity: 0
   cardArt: {fileID: 3068518452989093642, guid: b08c73b325879c84ca2a3acffcc7f4a5, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}

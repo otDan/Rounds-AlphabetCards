@@ -56,6 +56,7 @@ internal class CardChoiceSpawnPatch
         {
             switch (GameController.Round)
             {
+                case 0:
                 case 1:
                     {
                         cardName = "FCard";
@@ -63,7 +64,7 @@ internal class CardChoiceSpawnPatch
                     }
             }
         }
-
+        
         var hiddenCards = (List<CardInfo>) ModdingUtils.Utils.Cards.instance.GetFieldValue("hiddenCards");
         pickedCard = hiddenCards.Find(cardInfo =>
         {

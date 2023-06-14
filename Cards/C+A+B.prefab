@@ -91,9 +91,9 @@ MonoBehaviour:
     simepleAmount: 3
     stat: Gravity
   - positive: 1
-    amount: OnBlock
+    amount: OnBulletLand
     simepleAmount: 2
-    stat: Spawn Toxic Fumes Around Enemies
+    stat: Spawn Toxic Fumes
   rarity: 0
   cardArt: {fileID: 7287431081384307945, guid: 9dad19e1ed234b44bb0f9172de9bdba6, type: 3}
   sprite: {fileID: 21300000, guid: 5b742d082ddefaa489468fac5e1e3bff, type: 2}
@@ -227,7 +227,23 @@ MonoBehaviour:
   currentCharge: 0
   useCharge: 0
   dontAllowAutoFire: 0
-  objectsToSpawn: []
+  objectsToSpawn:
+  - effect: {fileID: 2113153767801857071, guid: fed1b9a2848c00945b8c6917a0accf3c,
+      type: 3}
+    direction: 0
+    spawnOn: 0
+    spawnAsChild: 0
+    numberOfSpawns: 1
+    normalOffset: 0.24
+    stickToBigTargets: 0
+    stickToAllTargets: 0
+    zeroZ: 0
+    AddToProjectile: {fileID: 0}
+    removeScriptsFromProjectileObject: 0
+    scaleStacks: 0
+    scaleStackM: 0
+    scaleFromDamage: 0
+    stacks: 0
   projectileColor: {r: 0, g: 0, b: 0, a: 1}
   waveMovement: 0
   teleport: 0

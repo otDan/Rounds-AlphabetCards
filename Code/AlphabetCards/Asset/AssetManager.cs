@@ -18,6 +18,17 @@ public static class AssetManager
         }
     }
 
+    private static GameObject _A_F;
+    public static GameObject A_F
+    {
+        get
+        {
+            if (_A_F == null)
+                _A_F = assets.LoadAsset<GameObject>("A_F");
+            return _A_F;
+        }
+    }
+
     private static GameObject _SpriteF;
     public static GameObject SpriteF
     {

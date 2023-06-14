@@ -28,17 +28,17 @@ public class CabEffect : MonoBehaviour
         cabSprite = Instantiate(cab, art);
         renderer = cabSprite.GetComponent<SpriteRenderer>();
         renderer.sortingLayerName = "MostFront";
-        player.data.block.BlockAction += BlockAction;
+        //player.data.block.BlockAction += BlockAction;
     }
 
     void OnDestroy()
     {
-        player.data.block.BlockAction -= BlockAction;
+        //player.data.block.BlockAction -= BlockAction;
     }
 
     private void Update()
     {
-        PushPlayers();
+        //PushPlayers();
 
         if (player == null) return;
         if (cabSprite == null) return;
@@ -58,60 +58,60 @@ public class CabEffect : MonoBehaviour
         }
     }
 
-    private void PushPlayers()
-    {
-        Vector3 playerPosition = player.transform.position;
+    //private void PushPlayers()
+    //{
+    //    Vector3 playerPosition = player.transform.position;
 
-        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID) && Vector3.Distance(player.transform.position, this.player.transform.position) < 5).ToList();
+    //    var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID) && Vector3.Distance(player.transform.position, this.player.transform.position) < 5).ToList();
 
-        foreach (Player enemyPlayer in enemyPlayers)
-        {
-            Vector3 direction = (playerPosition - enemyPlayer.transform.position).normalized;
-            Vector2 force = direction * 100f * 150f;
-            enemyPlayer.data.healthHandler.TakeForce(force * 10f, ForceMode2D.Force);
-        }
+    //    foreach (Player enemyPlayer in enemyPlayers)
+    //    {
+    //        Vector3 direction = (playerPosition - enemyPlayer.transform.position).normalized;
+    //        Vector2 force = direction * 100f * 150f;
+    //        enemyPlayer.data.healthHandler.TakeForce(force * 10f, ForceMode2D.Force);
+    //    }
             
-    }
+    //}
 
-    private void MoveTowards()
-    {
-        Vector3 playerPosition = player.transform.position;
-        Vector3 pointingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //private void MoveTowards()
+    //{
+    //    Vector3 playerPosition = player.transform.position;
+    //    Vector3 pointingPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 direction = (pointingPosition - playerPosition).normalized;
-        Vector2 force = direction * 100f * 15000f;
+    //    Vector3 direction = (pointingPosition - playerPosition).normalized;
+    //    Vector2 force = direction * 100f * 15000f;
 
-        Type type = typeof(PlayerVelocity);
-        MethodInfo methodInfo = type.GetMethod("AddForce", BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(Vector2), typeof(ForceMode2D) }, null);
-        methodInfo.Invoke(player.data.playerVel, new object[] { force, ForceMode2D.Force });
+    //    Type type = typeof(PlayerVelocity);
+    //    MethodInfo methodInfo = type.GetMethod("AddForce", BindingFlags.NonPublic | BindingFlags.Instance, null, new Type[] { typeof(Vector2), typeof(ForceMode2D) }, null);
+    //    methodInfo.Invoke(player.data.playerVel, new object[] { force, ForceMode2D.Force });
 
-        int layerMask = LayerMask.GetMask("Default", "IgnorePlayer", "Player");
-        RaycastHit2D[] raycastHits = Physics2D.RaycastAll(player.transform.position, direction, 10, layerMask);
-        for (int i = 0; i < raycastHits.Length; i++)
-        {
-            var hit = raycastHits[i];
-            var position = hit.point;
+    //    int layerMask = LayerMask.GetMask("Default", "IgnorePlayer", "Player");
+    //    RaycastHit2D[] raycastHits = Physics2D.RaycastAll(player.transform.position, direction, 10, layerMask);
+    //    for (int i = 0; i < raycastHits.Length; i++)
+    //    {
+    //        var hit = raycastHits[i];
+    //        var position = hit.point;
 
-            NetworkPhysicsObject component = hit.transform.GetComponent<NetworkPhysicsObject>();
-            if ((bool) component)
-            {
-                component.BulletPush(force / 10f, hit.point, player.data);
-            }
+    //        NetworkPhysicsObject component = hit.transform.GetComponent<NetworkPhysicsObject>();
+    //        if ((bool) component)
+    //        {
+    //            component.BulletPush(force / 10f, hit.point, player.data);
+    //        }
 
-            Player hitPlayer = hit.transform.GetComponent<Player>();
-            if ((bool) hitPlayer)
-            {
-                if (hitPlayer == player)
-                    continue;
-                hitPlayer.data.healthHandler.TakeDamage(Vector2.one * 75f, position);
-                hitPlayer.data.view.RPC("RPCA_AddSilence", RpcTarget.All, 2f);
-                hitPlayer.data.healthHandler.TakeForce(force * 10f, ForceMode2D.Force);
-            }
-        }
-    }
+    //        Player hitPlayer = hit.transform.GetComponent<Player>();
+    //        if ((bool) hitPlayer)
+    //        {
+    //            if (hitPlayer == player)
+    //                continue;
+    //            hitPlayer.data.healthHandler.TakeDamage(Vector2.one * 75f, position);
+    //            hitPlayer.data.view.RPC("RPCA_AddSilence", RpcTarget.All, 2f);
+    //            hitPlayer.data.healthHandler.TakeForce(force * 10f, ForceMode2D.Force);
+    //        }
+    //    }
+    //}
 
-    private void BlockAction(BlockTrigger.BlockTriggerType blockType)
-    {
-        MoveTowards();
-    }
+    //private void BlockAction(BlockTrigger.BlockTriggerType blockType)
+    //{
+    //    MoveTowards();
+    //}
 }

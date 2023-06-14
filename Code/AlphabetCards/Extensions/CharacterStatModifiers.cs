@@ -16,9 +16,6 @@ public static class AlphabetConstants
     }
 }
 
-// Add fields to CharacterStatModifiers
-// Using PCE's extension as coding reference
-
 public class CharacterStatModifiersAlphabetData
 {
     public AlphabetConstants.ModType sizeMod;

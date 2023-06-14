@@ -4,6 +4,8 @@ using ModdingUtils.Utils;
 using Photon.Realtime;
 using System;
 using System.Linq;
+using UnboundLib.Networking;
+using UnboundLib;
 using UnityEngine;
 
 public class FEffect : MonoBehaviour
@@ -12,60 +14,84 @@ public class FEffect : MonoBehaviour
     private GameObject fSprite;
     private SpriteRenderer renderer;
     private ColorEffect colorEffect;
+    private bool keyPressed = false;
 
     void Start()
     {
-        player = this.transform.root.GetComponent<Player>();
-        var art = player.transform.GetChild(0);
+        this.player = this.transform.root.GetComponent<Player>();
+        var art = this.player.transform.GetChild(0);
         var f = AssetManager.SpriteF;
-        fSprite = Instantiate(f, art);
-        renderer = fSprite.GetComponent<SpriteRenderer>();
-        renderer.sortingLayerName = "MostFront";
-        player.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-        player.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
-        player.transform.GetChild(4).GetChild(0).transform.localPosition += new Vector3(0, 0.95f, 0);
-        colorEffect = player.gameObject.AddComponent<ColorEffect>();
-        colorEffect.SetColor(Color.black); player.
-        data.block.BlockAction += BlockAction;
+        this.fSprite = Instantiate(f, art);
+        this.renderer = this.fSprite.GetComponent<SpriteRenderer>();
+        this.renderer.sortingLayerName = "MostFront";
+        this.player.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+        this.player.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+        this.player.transform.GetChild(4).GetChild(0).transform.localPosition += new Vector3(0, 0.95f, 0);
+        this.colorEffect = this.player.gameObject.AddComponent<ColorEffect>();
+        this.colorEffect.SetColor(Color.black);
     }
 
     private void Update()
     {
-        if (player == null) return;
-        if (fSprite == null) return;
-        if (renderer == null) return;
+        if (this.player == null) return;
+
+        if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
+        {
+            Attack(this.player);
+            keyPressed = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            keyPressed = false;
+        }
+        if (this.fSprite == null) return;
+        if (this.renderer == null) return;
 
         var flipped = player.data.aimDirection.x >= 0;
 
         if (flipped)
         {
-            fSprite.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            fSprite.transform.localPosition = new Vector3(0.75f, 0.5f, 0);
+            this.fSprite.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            this.fSprite.transform.localPosition = new Vector3(0.75f, 0.5f, 0);
         }
         else
         {
-            fSprite.transform.localRotation = new Quaternion(0, 180f, 0, 0);
-            fSprite.transform.localPosition = new Vector3(-0.75f, 0.5f, 0);
+            this.fSprite.transform.localRotation = new Quaternion(0, 180f, 0, 0);
+            this.fSprite.transform.localPosition = new Vector3(-0.75f, 0.5f, 0);
         }
     }
 
     private void OnDestroy()
     {
-        player.data.block.BlockAction -= BlockAction;
         colorEffect.Destroy();
     }
 
-    private void BlockAction(BlockTrigger.BlockTriggerType blockType)
+    public static void Attack(Player attacker)
     {
-        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID)).ToList();
+        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != attacker.teamID)).Select(p => p.playerID).ToArray();
+        NetworkingManager.RPC(typeof(FEffect), nameof(RPC_Attack), enemyPlayers);
+    }
 
-        foreach (Player enemyPlayer in enemyPlayers)
+    [UnboundRPC]
+    private static void RPC_Attack(int[] playerIds)
+    { 
+        foreach (Player enemyPlayer in PlayerManager.instance.players.Where(p => playerIds.Contains(p.playerID)))
         {
-            if (player.data.view.IsMine)
-                enemyPlayer.data.healthHandler.CallTakeDamage(((enemyPlayer.data.maxHealth / 3) * Vector2.one) - Vector2.one, enemyPlayer.transform.position);
-            enemyPlayer.GetComponentInParent<PlayerCollision>().IgnoreWallForFrames(2);
-            enemyPlayer.transform.position = player.transform.position;
-            AudioController.Play(AssetManager.Sound_Bite, enemyPlayer.transform, 1.15f);
+            var attack = Instantiate(AssetManager.A_F, enemyPlayer.transform);
+            attack.transform.localScale = new Vector3(0.25f, 0.25f);
+
+            float randomValue = UnityEngine.Random.Range(0f, 1f);
+            if (randomValue < 0.5f)
+            {
+                attack.transform.localRotation = Quaternion.Euler(0f, 0f, -90f);
+            }
+            else
+            {
+                attack.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+            }
+
+            attack.GetComponent<FBite>().enemyPlayer = enemyPlayer;
         }
     }
 }

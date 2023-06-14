@@ -83,7 +83,7 @@ public class SsundeeEffect : MonoBehaviour
         GameObject newParticleTeleport = Instantiate(particleTeleport, player.transform.position, Quaternion.identity);
         particles.Add(newParticleTeleport);
         GameObject newExplosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
-        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID) && Vector3.Distance(player.transform.position, this.player.transform.position) < 5).ToList();
+        var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID)).ToList();
 
         foreach (Player enemyPlayer in enemyPlayers)
         {
