@@ -91,7 +91,7 @@ MonoBehaviour:
     simepleAmount: 3
     stat: Gravity
   - positive: 1
-    amount: OnBulletLand
+    amount: 
     simepleAmount: 2
     stat: Spawn Toxic Fumes
   rarity: 0
@@ -227,23 +227,7 @@ MonoBehaviour:
   currentCharge: 0
   useCharge: 0
   dontAllowAutoFire: 0
-  objectsToSpawn:
-  - effect: {fileID: 2113153767801857071, guid: fed1b9a2848c00945b8c6917a0accf3c,
-      type: 3}
-    direction: 0
-    spawnOn: 0
-    spawnAsChild: 0
-    numberOfSpawns: 1
-    normalOffset: 0.24
-    stickToBigTargets: 0
-    stickToAllTargets: 0
-    zeroZ: 0
-    AddToProjectile: {fileID: 0}
-    removeScriptsFromProjectileObject: 0
-    scaleStacks: 0
-    scaleStackM: 0
-    scaleFromDamage: 0
-    stacks: 0
+  objectsToSpawn: []
   projectileColor: {r: 0, g: 0, b: 0, a: 1}
   waveMovement: 0
   teleport: 0

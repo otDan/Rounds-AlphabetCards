@@ -11,6 +11,7 @@ public class GameController
 {
     public static int Round = 0;
     public static List<CardInfo> AlreadySpawned = new List<CardInfo>();
+    public static bool nextSsundee = false;
 
     internal static IEnumerator GameStart(IGameModeHandler gameModeHandler)
     {

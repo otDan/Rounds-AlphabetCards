@@ -1,15 +1,7 @@
 ﻿using ModdingUtils.Utils;
-using Photon.Pun;
-using Sonigon.Internal;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
 using UnboundLib;
+using UnboundLib.Networking;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CabEffect : MonoBehaviour
 {
@@ -19,6 +11,8 @@ public class CabEffect : MonoBehaviour
 
     public UnityEngine.Color rayColor = UnityEngine.Color.magenta;
     public float lineWidth = 0.1f;
+
+    private bool keyPressed = false;
 
     void Start()
     {
@@ -41,6 +35,21 @@ public class CabEffect : MonoBehaviour
         //PushPlayers();
 
         if (player == null) return;
+
+        if (this.player.data.view.IsMine)
+        {
+            if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
+            {
+                SpawnToxic();
+                keyPressed = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                keyPressed = false;
+            }
+        }
+
         if (cabSprite == null) return;
         if (renderer == null) return;
 
@@ -56,6 +65,29 @@ public class CabEffect : MonoBehaviour
             cabSprite.transform.localRotation = new Quaternion(0, 180f, 0, 0);
             cabSprite.transform.localPosition = new Vector3(-0.65f, 0, 0);
         }
+    }
+
+    public void SpawnToxic()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        SendToxic(player.playerID, mousePosition);
+    }
+
+
+    public static void SendToxic(int playerId, Vector2 mousePosition)
+    {
+        NetworkingManager.RPC(typeof(CabEffect), nameof(RPC_SendToxic), playerId, mousePosition);
+    }
+
+    [UnboundRPC]
+    private static void RPC_SendToxic(int playerId, Vector2 mousePosition)
+    {
+        var toxicFumes = Instantiate(AssetManager.A_ToxicFumes, mousePosition, Quaternion.identity);
+        toxicFumes.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+        var spawnedAttack = toxicFumes.AddComponent<SpawnedAttack>();
+
+        Player player = PlayerManager.instance.players[playerId];
+        spawnedAttack.spawner = player;
     }
 
     //private void PushPlayers()

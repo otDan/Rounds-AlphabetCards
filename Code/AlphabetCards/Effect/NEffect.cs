@@ -51,6 +51,17 @@ internal class NEffect : MonoBehaviour
 
     private void Update()
     {
+        if (_player == null)
+            return;
+
+        if (this._player.data.view.IsMine)
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                GameController.nextSsundee = true;
+            }
+        }
+
         if (!ModdingUtils.Utils.PlayerStatus.PlayerAliveAndSimulated(_player))
         {
             _beam.SetActive(false);

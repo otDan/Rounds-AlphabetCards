@@ -76,13 +76,7 @@ public class SsundeeEffect : MonoBehaviour
     {
         Teleport(savedPosition);
         canTeleport = true;
-    }
 
-    private void Teleport(Vector3 teleportPosition)
-    {
-        GameObject newParticleTeleport = Instantiate(particleTeleport, player.transform.position, Quaternion.identity);
-        particles.Add(newParticleTeleport);
-        GameObject newExplosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
         var enemyPlayers = PlayerManager.instance.players.Where(player => PlayerStatus.PlayerAliveAndSimulated(player) && (player.teamID != this.player.teamID)).ToList();
 
         foreach (Player enemyPlayer in enemyPlayers)
@@ -90,7 +84,14 @@ public class SsundeeEffect : MonoBehaviour
             if (player.data.view.IsMine)
                 enemyPlayer.data.healthHandler.CallTakeDamage(enemyPlayer.data.maxHealth * Vector2.one, enemyPlayer.transform.position);
         }
+    }
 
+    private void Teleport(Vector3 teleportPosition)
+    {
+        GameObject newParticleTeleport = Instantiate(particleTeleport, player.transform.position, Quaternion.identity);
+        particles.Add(newParticleTeleport);
+        GameObject newExplosion = Instantiate(explosion, player.transform.position, Quaternion.identity);
+        
         newParticleTeleport = Instantiate(particleTeleport, teleportPosition, Quaternion.identity);
         particles.Add(newParticleTeleport);
 

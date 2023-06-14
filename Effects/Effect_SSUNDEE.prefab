@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c765adda22af03a4abc5423437d9bd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1317108034493518, guid: 5318da526db67d2458958a24d84dd806, type: 3}
+  explosion: {fileID: 679704972342724398, guid: fbba7be2b28cdae46940cddc9ec8cbf2,
+    type: 3}
 --- !u!95 &3578606179584670645
 Animator:
   serializedVersion: 3

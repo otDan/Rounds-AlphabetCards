@@ -45,11 +45,11 @@ internal class CardChoiceSpawnPatch
                         cardName = "NCard";
                         break;
                     }
-                case 10:
-                    {
-                        cardName = "S+S+U+N+D+E+E";
-                        break;
-                    }
+            }
+
+            if (GameController.nextSsundee)
+            {
+                cardName = "S+S+U+N+D+E+E";
             }
         }
         else

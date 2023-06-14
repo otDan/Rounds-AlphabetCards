@@ -114,4 +114,15 @@ public static class AssetManager
             return _Sound_SSUNDEE;
         }
     }
+
+    private static GameObject _A_ToxicFumes;
+    public static GameObject A_ToxicFumes
+    {
+        get
+        {
+            if (_A_ToxicFumes == null)
+                _A_ToxicFumes = assets.LoadAsset<GameObject>("A_ToxicFumes");
+            return _A_ToxicFumes;
+        }
+    }
 }

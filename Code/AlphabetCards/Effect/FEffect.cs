@@ -34,17 +34,21 @@ public class FEffect : MonoBehaviour
     private void Update()
     {
         if (this.player == null) return;
-
-        if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
+        
+        if (this.player.data.view.IsMine)
         {
-            Attack(this.player);
-            keyPressed = true;
+            if (Input.GetKeyDown(KeyCode.E) && !keyPressed)
+            {
+                Attack(this.player);
+                keyPressed = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                keyPressed = false;
+            }
         }
 
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            keyPressed = false;
-        }
         if (this.fSprite == null) return;
         if (this.renderer == null) return;
 
